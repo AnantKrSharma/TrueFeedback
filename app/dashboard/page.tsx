@@ -1,3 +1,4 @@
+'use client'
 
 import { Suspense } from 'react'
 import Link from 'next/link'
@@ -15,8 +16,6 @@ const mockLinks = [
 ]
 
 async function GenerateNewLink() {
-  'use server'
-  
   const newLink = await generateFeedbackLink()
   // In a real app, you'd save this to the database here
   return newLink
@@ -121,4 +120,3 @@ export default function DashboardPage() {
     </div>
   )
 }
-
