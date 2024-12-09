@@ -1,101 +1,64 @@
-import Image from "next/image";
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
 
-export default function Home() {
+export default function LandingPage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="min-h-screen bg-gradient-to-br from-purple-400 via-pink-500 to-red-500">
+      <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
+        <header className="text-center">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-6">
+            Welcome to TrueFeedback
+          </h1>
+          <p className="text-xl sm:text-2xl text-white mb-8">
+            Empowering honest communication through anonymous feedback
+          </p>
+          <Button asChild className="bg-white text-purple-600 hover:bg-purple-100 text-lg py-2 px-6">
+            <Link href="/auth">Get Started</Link>
+          </Button>
+        </header>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+        <main className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <FeatureCard
+            title="Anonymous Feedback"
+            description="Share thoughts without revealing identities, encouraging honest communication."
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
+          <FeatureCard
+            title="AI-Powered Suggestions"
+            description="AI algorithms analyze feedback patterns and generate constructive suggestions."
           />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
+          <FeatureCard
+            title="Interactive Dashboard"
+            description="View, manage, and moderate feedback through an intuitive dashboard."
           />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          <FeatureCard
+            title="Data Security"
+            description="Robust security measures protect user privacy and data integrity."
+          />
+        </main>
+
+        <section className="mt-20 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
+            Why Choose TrueFeedback?
+          </h2>
+          <p className="text-lg text-white max-w-3xl mx-auto">
+            TrueFeedback's architecture is built with scalability, security, and user experience in mind. 
+            By utilizing Next.js, the application can efficiently handle a growing user base and respond 
+            to real-time interactions without compromising performance. The platform prioritizes user 
+            privacy through secure data handling and robust encryption techniques, ensuring that all 
+            user interactions remain confidential.
+          </p>
+        </section>
+      </div>
     </div>
-  );
+  )
 }
+
+function FeatureCard({ title, description }: { title: string; description: string }) {
+  return (
+    <div className="bg-white bg-opacity-90 backdrop-blur-lg rounded-lg shadow-xl p-6">
+      <h3 className="text-xl font-semibold text-purple-600 mb-2">{title}</h3>
+      <p className="text-gray-600">{description}</p>
+    </div>
+  )
+}
+
